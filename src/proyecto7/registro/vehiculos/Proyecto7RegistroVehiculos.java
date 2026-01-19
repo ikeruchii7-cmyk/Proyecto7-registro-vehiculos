@@ -4,6 +4,8 @@
  */
 package proyecto7.registro.vehiculos;
 
+import Vistas_registros.VentanaPrincipal;
+
 /**
  *
  * @author ikerr
@@ -14,7 +16,8 @@ public class Proyecto7RegistroVehiculos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        VentanaPrincipal vp = new VentanaPrincipal();
+        vp.setVisible(true);
     }
     
 }
