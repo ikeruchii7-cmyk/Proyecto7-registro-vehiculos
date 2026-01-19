@@ -57,7 +57,7 @@ public class Ventana_moto extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Moto");
+        jLabel1.setText("Motos");
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos registro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel4.setForeground(new java.awt.Color(0, 204, 204));
@@ -278,47 +278,16 @@ public class Ventana_moto extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField campoAutoBateria;
-    private javax.swing.JTextField campoAñoComp;
-    private javax.swing.JTextField campoAñoComp1;
     private javax.swing.JTextField campoAñoComp2;
-    private javax.swing.JTextField campoBateria;
-    private javax.swing.JTextField campoBateria1;
-    private javax.swing.JTextField campoCodigo;
-    private javax.swing.JTextField campoCodigo1;
     private javax.swing.JTextField campoCodigo2;
-    private javax.swing.JTextField campoMarca;
-    private javax.swing.JTextField campoMarca1;
     private javax.swing.JTextField campoMarca2;
     private javax.swing.JTextField campoMatricula;
-    private javax.swing.JTextField campoNumenrolic;
-    private javax.swing.JTextField campoNumenrolic1;
-    private javax.swing.JTextField campoPotencia;
-    private javax.swing.JTextField campoPotencia1;
     private javax.swing.JTextField campoRevision;
-    private javax.swing.JTextField campoVelocidadmax;
-    private javax.swing.JTextField campoVelocidadmax1;
-    private javax.swing.JComboBox<String> comboEstado;
-    private javax.swing.JComboBox<String> comboEstado1;
     private javax.swing.JComboBox<String> comboEstado2;
-    private javax.swing.JComboBox<String> comboProveedor;
-    private javax.swing.JComboBox<String> comboProveedor1;
     private javax.swing.JComboBox<String> comboProveedor2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -327,16 +296,7 @@ public class Ventana_moto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }
