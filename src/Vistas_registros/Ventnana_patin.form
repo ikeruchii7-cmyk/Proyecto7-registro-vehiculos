@@ -138,7 +138,7 @@
                                   <Component id="campoCodigo" min="-2" pref="71" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jButton1" min="-2" pref="161" max="-2" attributes="0"/>
+                          <Component id="botonRegistrar" min="-2" pref="161" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="90" max="32767" attributes="0"/>
                   </Group>
@@ -193,7 +193,7 @@
                           <Component id="campoBateria" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="28" max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonRegistrar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -276,6 +276,9 @@
               <Properties>
                 <Property name="name" type="java.lang.String" value="codigo" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoCodigoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="campoMarca">
               <Properties>
@@ -290,8 +293,9 @@
             <Component class="javax.swing.JComboBox" name="comboProveedor">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
+                  <StringArray count="2">
                     <StringItem index="0" value="Seleccione"/>
+                    <StringItem index="1" value="1"/>
                   </StringArray>
                 </Property>
                 <Property name="name" type="java.lang.String" value="proveedor" noResource="true"/>
@@ -323,8 +327,9 @@
             <Component class="javax.swing.JComboBox" name="comboEstado">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
+                  <StringArray count="2">
                     <StringItem index="0" value="Seleccione"/>
+                    <StringItem index="1" value="1"/>
                   </StringArray>
                 </Property>
                 <Property name="name" type="java.lang.String" value="estado" noResource="true"/>
@@ -333,10 +338,13 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="botonRegistrar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alta"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRegistrarActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

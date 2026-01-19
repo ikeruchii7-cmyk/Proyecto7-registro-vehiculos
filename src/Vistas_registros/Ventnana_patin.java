@@ -4,6 +4,12 @@
  */
 package Vistas_registros;
 
+import Utilidades.Utilidades;
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import Modelo_clases.patin;
+
 /**
  *
  * @author ikerr
@@ -50,7 +56,7 @@ public class Ventnana_patin extends javax.swing.JDialog {
         campoVelocidadmax = new javax.swing.JTextField();
         campoBateria = new javax.swing.JTextField();
         comboEstado = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        botonRegistrar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -93,12 +99,17 @@ public class Ventnana_patin extends javax.swing.JDialog {
         jLabel10.setText("Autonomia de la bateria ");
 
         campoCodigo.setName("codigo"); // NOI18N
+        campoCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoCodigoActionPerformed(evt);
+            }
+        });
 
         campoMarca.setName("marca"); // NOI18N
 
         campoAñoComp.setName("añocompra"); // NOI18N
 
-        comboProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        comboProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "1" }));
         comboProveedor.setName("proveedor"); // NOI18N
 
         campoNumenrolic.setName("numerolicencia"); // NOI18N
@@ -109,10 +120,15 @@ public class Ventnana_patin extends javax.swing.JDialog {
 
         campoBateria.setName("autonomiabateria"); // NOI18N
 
-        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "1" }));
         comboEstado.setName("estado"); // NOI18N
 
-        jButton1.setText("Alta");
+        botonRegistrar.setText("Alta");
+        botonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -144,7 +160,7 @@ public class Ventnana_patin extends javax.swing.JDialog {
                             .addComponent(campoAñoComp, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -187,7 +203,7 @@ public class Ventnana_patin extends javax.swing.JDialog {
                     .addComponent(jLabel10)
                     .addComponent(campoBateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(botonRegistrar)
                 .addGap(17, 17, 17))
         );
 
@@ -239,6 +255,14 @@ public class Ventnana_patin extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void campoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoCodigoActionPerformed
+
+    private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
+registrar();        
+    }//GEN-LAST:event_botonRegistrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -277,6 +301,7 @@ public class Ventnana_patin extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonRegistrar;
     private javax.swing.JTextField campoAñoComp;
     private javax.swing.JTextField campoBateria;
     private javax.swing.JTextField campoCodigo;
@@ -286,7 +311,6 @@ public class Ventnana_patin extends javax.swing.JDialog {
     private javax.swing.JTextField campoVelocidadmax;
     private javax.swing.JComboBox<String> comboEstado;
     private javax.swing.JComboBox<String> comboProveedor;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -301,4 +325,109 @@ public class Ventnana_patin extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+
+/// Código para tu JDialog de Patín en NetBeans
+
+
+
+// ArrayList para almacenar los patines
+ArrayList<patin> Patin = new ArrayList<>();
+
+// Método para registrar (Alta)
+public void registrar() {
+    if (Utilidades.compruebaCampoVacio(campoCodigo)) {
+        Utilidades.lanzaAlertaVacio(campoCodigo);
+    } else if (comprobarCodigo(campoCodigo.getText())) {
+        JOptionPane.showMessageDialog(this, "Este código ya fue registrado");
+        campoCodigo.setText("");
+        campoCodigo.setBackground(Color.red);
+    } else if (Utilidades.compruebaCampoVacio(campoMarca)) {
+        Utilidades.lanzaAlertaVacio(campoMarca);
+    } else if (comboProveedor.getSelectedIndex() == 0) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un proveedor");
+        comboProveedor.requestFocus();
+    } else if (Utilidades.compruebaCampoVacio(campoAñoComp)) {
+        Utilidades.lanzaAlertaVacio(campoAñoComp);
+    } else if (comboEstado.getSelectedIndex() == 0) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un estado");
+        comboEstado.requestFocus();
+    } else if (Utilidades.compruebaCampoVacio(campoNumenrolic)) {
+        Utilidades.lanzaAlertaVacio(campoNumenrolic);
+    } else if (Utilidades.compruebaCampoVacio(campoPotencia)) {
+        Utilidades.lanzaAlertaVacio(campoPotencia);
+    } else if (Utilidades.compruebaCampoVacio(campoVelocidadmax)) {
+        Utilidades.lanzaAlertaVacio(campoVelocidadmax);
+    } else if (Utilidades.compruebaCampoVacio(campoBateria)) {
+        Utilidades.lanzaAlertaVacio(campoBateria);
+    } else {
+        try {
+            String codigo = campoCodigo.getText().trim();
+            String marca = campoMarca.getText().trim();
+            String proveedor = comboProveedor.getSelectedItem().toString();
+            int anioCompra = Integer.parseInt(campoAñoComp.getText().trim());
+            String estado = comboEstado.getSelectedItem().toString();
+            int numeroLicencia = Integer.parseInt(campoNumenrolic.getText().trim());
+            double potencia = Double.parseDouble(campoPotencia.getText().trim());
+            double velocidadMaxima = Double.parseDouble(campoVelocidadmax.getText().trim());
+            double autonomiaBateria = Double.parseDouble(campoBateria.getText().trim());
+            
+            patin p = new patin(numeroLicencia, potencia, velocidadMaxima, autonomiaBateria,
+                               codigo, marca, proveedor, anioCompra, estado);
+            
+            Patin.add(p);
+            
+            JOptionPane.showMessageDialog(this, "Patín registrado", 
+                                         "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+            
+            limpiarFormulario();
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error en los datos numéricos. Verifique que:\n" +
+                                         "- Año de compra sea un número entero\n" +
+                                         "- Número de licencia sea un número entero\n" +
+                                         "- Potencia, velocidad y batería sean números válidos",
+                                         "Error de formato", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+
+// Método para comprobar si el código ya existe
+public boolean comprobarCodigo(String codigoNuevo) {
+    for (patin p : Patin) {
+        if (p.getCii().equalsIgnoreCase(codigoNuevo)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Método para limpiar el formulario
+public void limpiarFormulario() {
+    campoCodigo.setText("");
+    campoMarca.setText("");
+    comboProveedor.setSelectedIndex(0);
+    campoAñoComp.setText("");
+    comboEstado.setSelectedIndex(0);
+    campoNumenrolic.setText("");
+    campoPotencia.setText("");
+    campoVelocidadmax.setText("");
+    campoBateria.setText("");
+    
+    // Restaurar colores de fondo
+    campoCodigo.setBackground(Color.WHITE);
+    campoMarca.setBackground(Color.WHITE);
+    campoAñoComp.setBackground(Color.WHITE);
+    campoNumenrolic.setBackground(Color.WHITE);
+    campoPotencia.setBackground(Color.WHITE);
+    campoVelocidadmax.setBackground(Color.WHITE);
+    campoBateria.setBackground(Color.WHITE);
+    
+    campoCodigo.requestFocus();
+}
+
+// EVENTO DEL BOTÓN ALTA (doble clic en el botón "Alta" en NetBeans y pega esto):
+
+private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {
+    registrar();
+}
 }
