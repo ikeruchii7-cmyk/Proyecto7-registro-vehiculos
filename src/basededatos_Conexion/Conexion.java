@@ -103,8 +103,8 @@ public class Conexion {
             st.setString(3, cli.getProveedor());
             st.setInt(4, cli.getAnyoCompra());
             st.setString(5, cli.getEstado());
-            st.setInt(6, cli.getNumCaducidadLlantas());
-            st.setDouble(7, cli.getAutonomiaBateria());
+            st.setInt(6, cli.getCaducidadLlantas());
+            st.setDouble(7, cli.getBateria());
 
             st.execute();
             return true;
@@ -132,8 +132,8 @@ public class Conexion {
             st.setString(3, cli.getProveedor());
             st.setInt(4, cli.getAnyoCompra());
             st.setString(5, cli.getEstado());
-            st.setInt(6, cli.getNumRevision());
-            st.setDouble(7, cli.getAutonomiaBateria());
+            st.setInt(6, cli.getRevision());
+            st.setDouble(7, cli.getBateria());
             st.setString(8, cli.getMatricula());
 
             st.execute();
@@ -161,9 +161,9 @@ public class Conexion {
             st.setString(3, cli.getProveedor());
             st.setInt(4, cli.getAnyoCompra());
             st.setString(5, cli.getEstado());
-            st.setDouble(6, cli.getAutonomiaBateria()); 
+            st.setDouble(6, cli.getBateria()); 
             st.setString(7, cli.getMatricula());
-            st.setString(8, cli.getCodIdentificacionMunicipal());
+            st.setString(8, cli.getCodigoIdentificacion());
 
             st.execute();
             return true;
@@ -190,10 +190,10 @@ public class Conexion {
             st.setString(3, cli.getProveedor());
             st.setInt(4, cli.getAnyoCompra());
             st.setString(5, cli.getEstado());
-            st.setInt(6, cli.getNumLicencia());
+            st.setInt(6, cli.getNumerolicencia());
             st.setDouble(7, cli.getPotencia());
-            st.setDouble(8, cli.getVelocidadMaxima());
-            st.setDouble(9, cli.getAutonomiaBateria());
+            st.setDouble(8, cli.getVelocidadmaxima());
+            st.setDouble(9, cli.getBateria());
 
             st.execute();
             return true;
