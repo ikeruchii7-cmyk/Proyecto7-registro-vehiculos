@@ -4,6 +4,12 @@
  */
 package Vistas_registros;
 
+import Modelo_clases.moto;
+import Utilidades.Utilidades;
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ikerr
@@ -299,4 +305,5 @@ public class Ventana_moto extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
+
 }

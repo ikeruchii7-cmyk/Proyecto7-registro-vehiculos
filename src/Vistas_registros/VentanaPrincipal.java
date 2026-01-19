@@ -167,20 +167,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+Ventana_bicicleta vc = new Ventana_bicicleta(this, true);
+        vc.setVisible(true);        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+Ventana_moto vc = new Ventana_moto(this, true);
+        vc.setVisible(true);        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+Ventana_coche vc = new Ventana_coche(this, true);
+        vc.setVisible(true);        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 Ventnana_patin vc = new Ventnana_patin(this, true);
-        vc.setVisible(true);        // TODO add your handling code here:
+        vc.setVisible(true);        
     }//GEN-LAST:event_jButton8ActionPerformed
 
     /**

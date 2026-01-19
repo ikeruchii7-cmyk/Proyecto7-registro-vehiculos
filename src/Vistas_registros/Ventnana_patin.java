@@ -326,14 +326,13 @@ registrar();
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 
-/// Código para tu JDialog de Patín en NetBeans
 
 
 
-// ArrayList para almacenar los patines
+
 ArrayList<patin> Patin = new ArrayList<>();
 
-// Método para registrar (Alta)
+
 public void registrar() {
     if (Utilidades.compruebaCampoVacio(campoCodigo)) {
         Utilidades.lanzaAlertaVacio(campoCodigo);
@@ -391,7 +390,7 @@ public void registrar() {
     }
 }
 
-// Método para comprobar si el código ya existe
+
 public boolean comprobarCodigo(String codigoNuevo) {
     for (patin p : Patin) {
         if (p.getCii().equalsIgnoreCase(codigoNuevo)) {
@@ -401,7 +400,7 @@ public boolean comprobarCodigo(String codigoNuevo) {
     return false;
 }
 
-// Método para limpiar el formulario
+
 public void limpiarFormulario() {
     campoCodigo.setText("");
     campoMarca.setText("");
@@ -413,7 +412,7 @@ public void limpiarFormulario() {
     campoVelocidadmax.setText("");
     campoBateria.setText("");
     
-    // Restaurar colores de fondo
+
     campoCodigo.setBackground(Color.WHITE);
     campoMarca.setBackground(Color.WHITE);
     campoAñoComp.setBackground(Color.WHITE);
@@ -425,7 +424,7 @@ public void limpiarFormulario() {
     campoCodigo.requestFocus();
 }
 
-// EVENTO DEL BOTÓN ALTA (doble clic en el botón "Alta" en NetBeans y pega esto):
+
 
 private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {
     registrar();
