@@ -117,6 +117,11 @@ public class Ventana_moto extends javax.swing.JDialog {
         comboEstado2.setName("estado"); // NOI18N
 
         jButton3.setText("Alta");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -245,6 +250,10 @@ public class Ventana_moto extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoRevisionActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+registrar();        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -306,4 +315,92 @@ public class Ventana_moto extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 
+    ArrayList<moto> Motos = new ArrayList<>();
+
+public void registrar() {
+    if (Utilidades.compruebaCampoVacio(campoCodigo2)) {
+        Utilidades.lanzaAlertaVacio(campoCodigo2);
+    } else if (comprobarCodigo(campoCodigo2.getText())) {
+        JOptionPane.showMessageDialog(this, "Este código ya fue registrado");
+        campoCodigo2.setText("");
+        campoCodigo2.setBackground(Color.red);
+    } else if (Utilidades.compruebaCampoVacio(campoMarca2)) {
+        Utilidades.lanzaAlertaVacio(campoMarca2);
+    } else if (comboProveedor2.getSelectedIndex() == 0) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un proveedor");
+        comboProveedor2.requestFocus();
+    } else if (Utilidades.compruebaCampoVacio(campoAñoComp2)) {
+        Utilidades.lanzaAlertaVacio(campoAñoComp2);
+    } else if (comboEstado2.getSelectedIndex() == 0) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un estado");
+        comboEstado2.requestFocus();
+    } else if (Utilidades.compruebaCampoVacio(campoRevision)) {
+        Utilidades.lanzaAlertaVacio(campoRevision);
+    } else if (Utilidades.compruebaCampoVacio(campoAutoBateria)) {
+        Utilidades.lanzaAlertaVacio(campoAutoBateria);
+    } else if (Utilidades.compruebaCampoVacio(campoMatricula)) {
+        Utilidades.lanzaAlertaVacio(campoMatricula);
+    } else {
+        try {
+            String codigo = campoCodigo2.getText().trim();
+            String marca = campoMarca2.getText().trim();
+            String proveedor = comboProveedor2.getSelectedItem().toString();
+            int anioCompra = Integer.parseInt(campoAñoComp2.getText().trim());
+            String estado = comboEstado2.getSelectedItem().toString();
+            int anioRevision = Integer.parseInt(campoRevision.getText().trim());
+            double autonomiaBateria = Double.parseDouble(campoAutoBateria.getText().trim());
+            String matricula = campoMatricula.getText().trim();
+            
+                moto m = new moto(matricula, anioRevision, autonomiaBateria, codigo,
+                  marca, proveedor, anioCompra, estado);
+            
+            Motos.add(m);
+            
+            JOptionPane.showMessageDialog(this, "Moto registrada exitosamente", 
+                                         "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+            
+            limpiarFormulario();
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error en los datos numéricos. Verifique que:\n" +
+                                         "- Año de compra sea un número entero\n" +
+                                         "- Año de revisión sea un número entero\n" +
+                                         "- Autonomía de la batería sea un número válido",
+                                         "Error de formato", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+
+public boolean comprobarCodigo(String codigoNuevo) {
+    for (moto m : Motos) {
+        if (m.getCii().equalsIgnoreCase(codigoNuevo)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+public void limpiarFormulario() {
+    campoCodigo2.setText("");
+    campoMarca2.setText("");
+    comboProveedor2.setSelectedIndex(0);
+    campoAñoComp2.setText("");
+    comboEstado2.setSelectedIndex(0);
+    campoRevision.setText("");
+    campoAutoBateria.setText("");
+    campoMatricula.setText("");
+    
+    campoCodigo2.setBackground(Color.WHITE);
+    campoMarca2.setBackground(Color.WHITE);
+    campoAñoComp2.setBackground(Color.WHITE);
+    campoRevision.setBackground(Color.WHITE);
+    campoAutoBateria.setBackground(Color.WHITE);
+    campoMatricula.setBackground(Color.WHITE);
+    
+    campoCodigo2.requestFocus();
+}
+
+private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {
+    registrar();
+}
 }

@@ -109,8 +109,13 @@ public class Ventnana_patin extends javax.swing.JDialog {
 
         campoAñoComp.setName("añocompra"); // NOI18N
 
-        comboProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "1" }));
+        comboProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
         comboProveedor.setName("proveedor"); // NOI18N
+        comboProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboProveedorActionPerformed(evt);
+            }
+        });
 
         campoNumenrolic.setName("numerolicencia"); // NOI18N
 
@@ -120,7 +125,7 @@ public class Ventnana_patin extends javax.swing.JDialog {
 
         campoBateria.setName("autonomiabateria"); // NOI18N
 
-        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "1" }));
+        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
         comboEstado.setName("estado"); // NOI18N
 
         botonRegistrar.setText("Alta");
@@ -262,6 +267,10 @@ public class Ventnana_patin extends javax.swing.JDialog {
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
 registrar();        
     }//GEN-LAST:event_botonRegistrarActionPerformed
+
+    private void comboProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboProveedorActionPerformed
 
     /**
      * @param args the command line arguments
