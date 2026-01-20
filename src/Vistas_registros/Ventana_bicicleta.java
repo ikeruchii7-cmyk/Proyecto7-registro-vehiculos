@@ -4,6 +4,12 @@
  */
 package Vistas_registros;
 
+import Modelo_clases.bicicleta;
+import Utilidades.Utilidades;
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ikerr
@@ -99,6 +105,11 @@ public class Ventana_bicicleta extends javax.swing.JDialog {
         comboEstado3.setName("estado"); // NOI18N
 
         jButton4.setText("Alta");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -211,6 +222,10 @@ public class Ventana_bicicleta extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+registrar();       
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -250,66 +265,15 @@ public class Ventana_bicicleta extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField campoAutonomia;
-    private javax.swing.JTextField campoAñoComp;
-    private javax.swing.JTextField campoAñoComp1;
-    private javax.swing.JTextField campoAñoComp2;
     private javax.swing.JTextField campoAñoComp3;
     private javax.swing.JTextField campoAñocadu;
-    private javax.swing.JTextField campoBateria;
-    private javax.swing.JTextField campoBateria1;
-    private javax.swing.JTextField campoBateria2;
-    private javax.swing.JTextField campoCodigo;
-    private javax.swing.JTextField campoCodigo1;
-    private javax.swing.JTextField campoCodigo2;
     private javax.swing.JTextField campoCodigo3;
-    private javax.swing.JTextField campoMarca;
-    private javax.swing.JTextField campoMarca1;
-    private javax.swing.JTextField campoMarca2;
     private javax.swing.JTextField campoMarca3;
-    private javax.swing.JTextField campoNumenrolic;
-    private javax.swing.JTextField campoNumenrolic1;
-    private javax.swing.JTextField campoNumenrolic2;
-    private javax.swing.JTextField campoPotencia;
-    private javax.swing.JTextField campoPotencia1;
-    private javax.swing.JTextField campoPotencia2;
-    private javax.swing.JTextField campoVelocidadmax;
-    private javax.swing.JTextField campoVelocidadmax1;
-    private javax.swing.JTextField campoVelocidadmax2;
-    private javax.swing.JComboBox<String> comboEstado;
-    private javax.swing.JComboBox<String> comboEstado1;
-    private javax.swing.JComboBox<String> comboEstado2;
     private javax.swing.JComboBox<String> comboEstado3;
-    private javax.swing.JComboBox<String> comboProveedor;
-    private javax.swing.JComboBox<String> comboProveedor1;
-    private javax.swing.JComboBox<String> comboProveedor2;
     private javax.swing.JComboBox<String> comboProveedor3;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -317,16 +281,91 @@ public class Ventana_bicicleta extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
+
+ArrayList<bicicleta> Bicicletas = new ArrayList<>();
+
+public void registrar() {
+    if (Utilidades.compruebaCampoVacio(campoCodigo3)) {
+        Utilidades.lanzaAlertaVacio(campoCodigo3);
+    } else if (comprobarCodigo(campoCodigo3.getText())) {
+        JOptionPane.showMessageDialog(this, "Este código ya fue registrado");
+        campoCodigo3.setText("");
+        campoCodigo3.setBackground(Color.red);
+    } else if (Utilidades.compruebaCampoVacio(campoMarca3)) {
+        Utilidades.lanzaAlertaVacio(campoMarca3);
+    } else if (comboProveedor3.getSelectedIndex() == 0) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un proveedor");
+        comboProveedor3.requestFocus();
+    } else if (Utilidades.compruebaCampoVacio(campoAñoComp3)) {
+        Utilidades.lanzaAlertaVacio(campoAñoComp3);
+    } else if (comboEstado3.getSelectedIndex() == 0) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un estado");
+        comboEstado3.requestFocus();
+    } else if (Utilidades.compruebaCampoVacio(campoAñocadu)) {
+        Utilidades.lanzaAlertaVacio(campoAñocadu);
+    } else if (Utilidades.compruebaCampoVacio(campoAutonomia)) {
+        Utilidades.lanzaAlertaVacio(campoAutonomia);
+    } else {
+        try {
+            String codigo = campoCodigo3.getText().trim();
+            String marca = campoMarca3.getText().trim();
+            String proveedor = comboProveedor3.getSelectedItem().toString();
+            int anioCompra = Integer.parseInt(campoAñoComp3.getText().trim());
+            String estado = comboEstado3.getSelectedItem().toString();
+            int caducidadLlantas = Integer.parseInt(campoAñocadu.getText().trim());
+            double autonomiaBateria = Double.parseDouble(campoAutonomia.getText().trim());
+            
+            bicicleta b = new bicicleta(caducidadLlantas, autonomiaBateria, codigo,
+                                       marca, proveedor, anioCompra, estado);
+            
+            Bicicletas.add(b);
+            
+            JOptionPane.showMessageDialog(this, "Bicicleta registrada exitosamente", 
+                                         "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+            
+            limpiarFormulario();
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error en los datos numéricos. Verifique que:\n" +
+                                         "- Año de compra sea un número entero\n" +
+                                         "- Año caducidad llantas sea un número entero\n" +
+                                         "- Autonomía de la batería sea un número válido",
+                                         "Error de formato", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+
+public boolean comprobarCodigo(String codigoNuevo) {
+    for (bicicleta b : Bicicletas) {
+        if (b.getCii().equalsIgnoreCase(codigoNuevo)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+public void limpiarFormulario() {
+    campoCodigo3.setText("");
+    campoMarca3.setText("");
+    comboProveedor3.setSelectedIndex(0);
+    campoAñoComp3.setText("");
+    comboEstado3.setSelectedIndex(0);
+    campoAñocadu.setText("");
+    campoAutonomia.setText("");
+    
+    campoCodigo3.setBackground(Color.WHITE);
+    campoMarca3.setBackground(Color.WHITE);
+    campoAñoComp3.setBackground(Color.WHITE);
+    campoAñocadu.setBackground(Color.WHITE);
+    campoAutonomia.setBackground(Color.WHITE);
+    
+    campoCodigo3.requestFocus();
+}
+
+private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {
+    registrar();
+}
 }

@@ -4,6 +4,13 @@
  */
 package Vistas_registros;
 
+import Modelo_clases.coche;
+import Utilidades.Utilidades;
+import basededatos_Conexion.Conexion;
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ikerr
@@ -106,6 +113,11 @@ public class Ventana_coche extends javax.swing.JDialog {
         comboEstado.setName("estado"); // NOI18N
 
         jButton1.setText("Alta");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -225,6 +237,10 @@ public class Ventana_coche extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+Conexion.conectar();      
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -285,4 +301,94 @@ public class Ventana_coche extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+
+   ArrayList<coche> Coches = new ArrayList<>();
+
+public void registrar() {
+    if (Utilidades.compruebaCampoVacio(campoCodigo)) {
+        Utilidades.lanzaAlertaVacio(campoCodigo);
+    } else if (comprobarCodigo(campoCodigo.getText())) {
+        JOptionPane.showMessageDialog(this, "Este código ya fue registrado");
+        campoCodigo.setText("");
+        campoCodigo.setBackground(Color.red);
+    } else if (Utilidades.compruebaCampoVacio(campoMarca)) {
+        Utilidades.lanzaAlertaVacio(campoMarca);
+    } else if (comboProveedor.getSelectedIndex() == 0) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un proveedor");
+        comboProveedor.requestFocus();
+    } else if (Utilidades.compruebaCampoVacio(campoAñoComp)) {
+        Utilidades.lanzaAlertaVacio(campoAñoComp);
+    } else if (comboEstado.getSelectedIndex() == 0) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un estado");
+        comboEstado.requestFocus();
+    } else if (Utilidades.compruebaCampoVacio(campoAut)) {
+        Utilidades.lanzaAlertaVacio(campoAut);
+    } else if (Utilidades.compruebaCampoVacio(campoMatricula)) {
+        Utilidades.lanzaAlertaVacio(campoMatricula);
+    } else if (Utilidades.compruebaCampoVacio(campoCodmun)) {
+        Utilidades.lanzaAlertaVacio(campoCodmun);
+    } else {
+        try {
+            String codigo = campoCodigo.getText().trim();
+            String marca = campoMarca.getText().trim();
+            String proveedor = comboProveedor.getSelectedItem().toString();
+            int anioCompra = Integer.parseInt(campoAñoComp.getText().trim());
+            String estado = comboEstado.getSelectedItem().toString();
+            double autonomiaBateria = Double.parseDouble(campoAut.getText().trim());
+            String matricula = campoMatricula.getText().trim();
+            String codIdMunicipal = campoCodmun.getText().trim();
+            
+            coche c = new coche(matricula, codIdMunicipal, autonomiaBateria,
+                               codigo, marca, proveedor, anioCompra, estado);
+            
+            Coches.add(c);
+            
+            
+            JOptionPane.showMessageDialog(this, "Coche registrado exitosamente", 
+                                         "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+            
+            limpiarFormulario();
+            
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error en los datos numéricos. Verifique que:\n" +
+                                         "- Año de compra sea un número entero\n" +
+                                         "- Autonomía de la batería sea un número válido",
+                                         "Error de formato", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+
+public boolean comprobarCodigo(String codigoNuevo) {
+    for (coche c : Coches) {
+        if (c.getCii().equalsIgnoreCase(codigoNuevo)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+public void limpiarFormulario() {
+    campoCodigo.setText("");
+    campoMarca.setText("");
+    comboProveedor.setSelectedIndex(0);
+    campoAñoComp.setText("");
+    comboEstado.setSelectedIndex(0);
+    campoAut.setText("");
+    campoMatricula.setText("");
+    campoCodmun.setText("");
+    
+    campoCodigo.setBackground(Color.WHITE);
+    campoMarca.setBackground(Color.WHITE);
+    campoAñoComp.setBackground(Color.WHITE);
+    campoAut.setBackground(Color.WHITE);
+    campoMatricula.setBackground(Color.WHITE);
+    campoCodmun.setBackground(Color.WHITE);
+    
+    campoCodigo.requestFocus();
+}
+
+private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {
+    registrar();
+}
 }

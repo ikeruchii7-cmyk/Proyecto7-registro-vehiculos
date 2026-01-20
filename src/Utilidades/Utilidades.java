@@ -69,7 +69,39 @@ public class Utilidades {
     public static boolean TelefonoValido(String telefono) {
         return telefono.matches(patronTelefono);
     }
-    
+    public static boolean compruebaCodCoche(JTextField campo) {
+    String texto = campo.getText().trim();
+    if (texto.length() != 7) {
+        return false;
+    }
+    if (!texto.startsWith("COC-")) {
+        return false;
+    }
+    String numeros = texto.substring(4);
+    return esNumero(numeros);
+}
+
+public static boolean compruebaCampoNombre(JTextField campo) {
+    if (compruebaCampoVacio(campo)) {
+        return false;
+    }
+    return NombreValido(campo.getText());
+}
+
+public static boolean compruebaCombo(JComboBox combo) {
+    return !compruebaComboNoSeleccionado(combo);
+}
+
+public static boolean compruebaSoloNumeros(JTextField campo) {
+    if (compruebaCampoVacio(campo)) {
+        return false;
+    }
+    return esNumero(campo.getText());
+}
+
+public static boolean compruebaCampo(JTextField campo) {
+    return !compruebaCampoVacio(campo);
+}
     public static void lanzaAlertaFormatoTelefono(JTextField campo) {
         JOptionPane.showMessageDialog(null, 
                 "El formato del teléfono es incorrecto. Debe contener 9 dígitos");
@@ -101,5 +133,6 @@ public class Utilidades {
     } catch (NumberFormatException e) {
         return false;
     }
-}
-}
+    }}
+    
+
