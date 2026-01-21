@@ -4,17 +4,17 @@
  */
 package basededatos_Conexion;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JComboBox;
 import Modelo_clases.bicicleta;
 import Modelo_clases.coche;
 import Modelo_clases.moto;
 import Modelo_clases.patin;
-import javax.swing.JComboBox;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
 
 
 

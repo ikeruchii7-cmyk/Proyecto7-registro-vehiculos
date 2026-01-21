@@ -6,6 +6,7 @@ package Vistas_registros;
 
 import Modelo_clases.moto;
 import Utilidades.Utilidades;
+import basededatos_Conexion.Conexion;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -24,6 +25,9 @@ public class Ventana_moto extends javax.swing.JDialog {
     public Ventana_moto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        Conexion.conectar();
+        Conexion.cargasComboProveedores(comboProveedor2);
+        Conexion.cargasComboEstados(comboEstado2);
     }
 
     /**

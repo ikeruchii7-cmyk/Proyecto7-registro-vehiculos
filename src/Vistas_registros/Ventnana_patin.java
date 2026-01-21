@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import Modelo_clases.patin;
+import basededatos_Conexion.Conexion;
 
 /**
  *
@@ -24,6 +25,9 @@ public class Ventnana_patin extends javax.swing.JDialog {
     public Ventnana_patin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        Conexion.conectar();
+        Conexion.cargasComboProveedores(comboProveedor);
+        Conexion.cargasComboEstados(comboEstado);
     }
 
     /**

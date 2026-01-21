@@ -4,6 +4,8 @@
  */
 package Vistas_registros;
 
+import basededatos_Conexion.Conexion;
+
 /**
  *
  * @author ikerr
@@ -17,6 +19,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
+        Conexion.conectar();
+        
     }
 
     /**

@@ -25,6 +25,10 @@ public class Ventana_coche extends javax.swing.JDialog {
     public Ventana_coche(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        Conexion.conectar();
+        Conexion.cargasComboProveedores(comboProveedor);
+        Conexion.cargasComboEstados(comboEstado);
+        
     }
 
     /**

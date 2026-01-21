@@ -6,9 +6,11 @@ package Vistas_registros;
 
 import Modelo_clases.bicicleta;
 import Utilidades.Utilidades;
+import basededatos_Conexion.Conexion;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -24,6 +26,10 @@ public class Ventana_bicicleta extends javax.swing.JDialog {
     public Ventana_bicicleta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        Conexion.conectar();
+        Conexion.cargasComboProveedores(comboProveedor3);
+        Conexion.cargasComboEstados(comboEstado3);
+        
     }
 
     /**
